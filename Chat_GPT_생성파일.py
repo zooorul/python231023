@@ -1,38 +1,39 @@
-# Lists, Tuples, Sets, and Dicts Comparison Demo
+class Person:
+    def __init__(self, name, id_number, phone_number):
+        self.name = name  # 이름
+        self.id_number = id_number  # 신분증 번호
+        self.phone_number = phone_number  # 전화 번호
 
-# Lists
-my_list = [1, 2, 3, 4, 4]
+    def printinfo(self):
+        print(f"name: {self.name}")
+        print(f"id_number: {self.id_number}")
+        print(f"phone_number: {self.phone_number}")
 
-# Tuples
-my_tuple = (1, 2, 3)
+class Manager(Person):
+    def __init__(self, name, id_number, phone_number, skill):
+        super().__init__(name, id_number, phone_number)
+        self.skill = skill  # 기술
 
-# Sets
-my_set = {1, 2, 3, 3}
+    def printinfo(self):
+        super().printinfo()
+        print(f"skill: {self.skill}")
 
-# Dicts
-my_dict = {'a': 1, 'b': 2, 'c': 3}
+class Employee(Manager):
+    def __init__(self, name, id_number, phone_number, skill, title):
+        super().__init__(name, id_number, phone_number, skill)
+        self.title = title  # 직급
 
-# List Example
-print("List Example:")
-print("List:", my_list)
-print("First Element:", my_list[0])
-print("Supports Duplicates:", len(my_list) != len(set(my_list)))  # Check for duplicates
+    def printinfo(self):
+        super().printinfo()
+        print(f"title: {self.title}")
 
-# Tuple Example
-print("\nTuple Example:")
-print("Tuple:", my_tuple)
-print("First Element:", my_tuple[0])
-print("Immutability:", isinstance(my_tuple, tuple))
+# 이 클래스들을 생성하고 사용하는 샘플 코드:
+if __name__ == "__main__":
+    person = Person("홍길동", "12345", "555-123-4567")
+    person.printinfo()
 
-# Set Example
-print("\nSet Example:")
-print("Set:", my_set)
-print("Uniqueness:", len(my_set) == len(set(my_set)))  # Check for duplicates
-print("Fast Membership Test:", 2 in my_set)
+    manager = Manager("이영희", "67890", "555-987-6543", "프로젝트 관리")
+    manager.printinfo()
 
-# Dict Example
-print("\nDict Example:")
-print("Dict:", my_dict)
-print("Value for 'b':", my_dict['b'])
-print("Keys:", my_dict.keys())
-print("Key-Value Mapping:", isinstance(my_dict, dict))
+    employee = Employee("김철수", "13579", "555-555-5555", "코딩", "소프트웨어 엔지니어")
+    employee.printinfo()

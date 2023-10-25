@@ -21,5 +21,4 @@ account1 = BankAccount(100, "전우치", 15000)
 account1.deposit(5000)
 account1.withdraw(3000)
 print(account1)
-#읽기 → 이름을 숨겨줌 exe로 만들면 Source를 사용자가 볼 수 없음.
-print(account1.__balance) 
+#읽기 → 이름을 숨겨줌 exe로 만들면 Source를 사용자가 볼 수 없음. 
