@@ -21,7 +21,7 @@
 import sqlite3
 
 #연결객체(일단은 메모리에 저장) 
-con = sqlite3.connect(":memory:")
+con = sqlite3.connect("c:\\work\\sample.db")
 #커서객체
 cur = con.cursor()
 #테이블 구조 생성
@@ -46,12 +46,14 @@ cur.executemany("insert into PhoneBook (name, phoneNum) values (?,?);",
 
 #검색
 cur.execute("select * from PhoneBook;")
-print("---fetchone()---") # 하나씩 가져와서 루프로 보여줘도 됌
-print(cur.fetchone())
-print("---fetchmany(2)---") # 10개씩 덩어리로 끊어서 보여줄 수도 있음
-print(cur.fetchmany(2))
-print("---fetchall()---") # Data가 100, 1000건으로 적으면 fetchall로 다 가져옴
-cur.execute("select * from PhoneBook;") #버퍼를 채워주는 것
+# print("---fetchone()---") # 하나씩 가져와서 루프로 보여줘도 됌
+# print(cur.fetchone())
+# print("---fetchmany(2)---") # 10개씩 덩어리로 끊어서 보여줄 수도 있음
+# print(cur.fetchmany(2))
+# print("---fetchall()---") # Data가 100, 1000건으로 적으면 fetchall로 다 가져옴
+# cur.execute("select * from PhoneBook;") #버퍼를 채워주는 것
 print(cur.fetchall()) 
 # 임시 메모리(휘발성) -> 데이터 가져오면 Buffer는 사라짐 -> DB에 저장해야함
     
+#작업 완료
+con.commit()
